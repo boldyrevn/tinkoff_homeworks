@@ -1,0 +1,36 @@
+syntax = 'proto3';
+
+package grpcapp;
+
+option go_package='./;grpcapp';
+
+message FileDownloadRequest {
+  string name = 1;
+}
+
+message FileDownloadResponse {
+  int64 package_size = 1;
+  bytes data = 2;
+}
+
+message FileInfoRequest {
+  string name = 1;
+}
+
+message FileInfoResponse {
+  string name = 1;
+  int64 size = 2;
+  int64 mod_time = 3;
+}
+
+message FileListRequest {}
+
+message FileListResponse {
+  repeated FileInfoResponse list = 1;
+}
+
+service FileService {
+  rpc DownloadFile (FileDownloadRequest) returns (stream FileDownloadResponse) {}
+  rpc GetFileList (FileListRequest) returns (FileListResponse) {}
+  rpc GetFileInfo (FileInfoRequest) returns (FileInfoResponse) {}
+}

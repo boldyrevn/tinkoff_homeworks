@@ -1,0 +1,9 @@
+{
+  "addr": "localhost:8080",
+  "readTimeout": 1,
+  "readHeaderTimeout": 1,
+  "writeTimeout": 2,
+  "idleTimeout": 2,
+  "authOn": false,
+  "loggingOn": true
+}
